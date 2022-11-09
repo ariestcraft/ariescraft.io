@@ -1,0 +1,142 @@
+<%- include('header'); -%>
+
+    <style>
+        .container {
+            margin-top: 150px;
+        }
+
+        td {
+            padding: 0;
+        }
+
+        .btn {
+            padding: 0;
+        }
+    </style>
+
+    <section id="main-content" class="container">
+        <section class="wrapper">
+            <h3> Project Details</h3>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="content-panel">
+                        <!-- <h4><i class="fa fa-angle-right"></i> Responsive Table</h4> -->
+                        <section id="unseen">
+                            <table class="table table-bordered table-striped table-condensed">
+                                <thead>
+                                    <!-- <tr>
+                                        <th>Code</th>
+                                        <th>Company</th>
+                                    </tr> -->
+                                </thead>
+                                <tbody>
+                                    <% if(product.length!=0){ var i=1; product.forEach(function(data){ %>
+
+                                        <input id="product_type" type="hidden" value="<%=data.product_type %>">
+                                        <tr>
+                                            <td class="col-lg-4">
+                                                Order ID
+                                            </td>
+                                            <td class="col-lg-8">
+                                                <%=data.product_id %>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-lg-4">Product category</td>
+                                            <td class="col-lg-8">
+                                                <%=data.product_type %>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-lg-4">Refrence</td>
+                                            <td class="col-lg-8">
+                                                <%=data.reference%>
+                                            </td>
+                                        </tr>
+                                        <tr id="format">
+                                            <td class="col-lg-4 ">Format type</td>
+                                            <td id="format" class="col-lg-8">
+                                                <%=data.format_type %>
+                                            </td>
+                                        </tr>
+                                        <tr id="use_for">
+                                            <td class="col-lg-4">Use for</td>
+                                            <td id="use" class="col-lg-8">
+                                                <%=data.use_for %>
+                                            </td>
+                                        </tr>
+                                        <div>
+
+                                            <tr>
+                                                <td class="col-lg-4">Processed File</td>
+
+
+
+                                                <td class="col-lg-8">
+                                                    <% if(order.length!=0){ var i=1; order.forEach(function(or){ %>
+
+                                                        <!-- <iframe src="/customer/fileupload/<%=or.file_name%>"
+                                                            frameBorder="0" scrolling="auto" height="100%"
+                                                            width="100%"></iframe> -->
+
+
+                                                        <!-- <img src="/customer/fileupload/<%=or.file_name%>" alt=""
+                                                            style="width: 150px; height: 120px;"> -->
+                                                        <p>
+                                                            <a class="btn-sm btn-primary"
+                                                                href="/customer/fileupload/<%=or.file_name%>"
+                                                                download>Download
+                                                                File</a>
+                                                            <%=or.file_name%>
+                                                        </p>
+
+                                                        <% i++;}) %>
+                                                            <% }%>
+                                                </td>
+
+                                            </tr>
+
+                                            <!-- <td class="col-lg-4">Processed File Name</td> -->
+
+                                        </div>
+                                        <td class="col-lg-4">Comments</td>
+                                        <td class="col-lg-8">
+                                            <%=data.additional_info%>
+                                        </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-lg-4">Status</td>
+                                            <td id="status" class="col-lg-8 text-<%=data.text%>">
+                                                <%=data.status%>
+                                            </td>
+                                        </tr>
+
+                                        <% i++;}) %>
+                                            <% }%>
+                                </tbody>
+                            </table>
+                        </section>
+                    </div><!-- /content-panel -->
+                </div><!-- /col-lg-4 -->
+            </div><!-- /row -->
+
+
+
+        </section>
+        <! --/wrapper -->
+    </section><!-- /MAIN CONTENT -->
+
+
+
+    <script>
+        var pt = document.querySelector("#product_type").value;
+
+        if (pt == "digitizing" || pt == "document") {
+            document.querySelector("#format").remove();
+            document.querySelector("#use_for").remove();
+        }
+    </script>
+
+
+
+    <%- include('footer'); -%>

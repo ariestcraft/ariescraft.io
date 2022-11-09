@@ -1,0 +1,142 @@
+<%- include('header') -%>
+
+  <style>
+    .row {
+      text-align: center !important;
+    }
+
+    th {
+      font-size: 16px;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+
+    td {
+      font-size: 16px;
+      padding: 0 !important;
+      margin: 0 !important;
+
+    }
+
+    /* tr {
+      padding: 0 !important;
+    } */
+
+    .bi-pen-fill {
+      font-size: 14px;
+
+    }
+
+    .bi-eye-fill {
+      font-size: 17px;
+    }
+
+    .bi-cloud-arrow-down-fill {
+      font-size: 16px;
+    }
+  </style>
+
+  <section style="background-color: aliceblue;">
+    <div id="app" class="container">
+      <h3 class="mt-3">User Assign</h3>
+
+      <div class="row">
+        <div class="col" style="overflow-x:auto;">
+          <table style=" border-collapse: collapse;" id="user-table" class="display table-bordered" cellspacing="0"
+            width="100%">
+            <thead>
+              <tr>
+                <th class="col-lg-1">Order Id</th>
+                <th class="col-lg-1">Category</th>
+                <th class="col-lg-2">Client</th>
+                <th class="col-lg-1">refrence</th>
+                <!-- <th>Status</th> -->
+                <th class="col-lg-3">Comment</th>
+                <th class="col-lg-1">status</th>
+                <th class="col-lg-1">Assigned</th>
+                <th class="col-lg-1">Assign</th>
+                <th class="col-lg-1">Views</th>
+                <th>Completed files</th>
+                <!-- <th class="col-lg-1">Download</th> -->
+              </tr>
+
+            </thead>
+            <tbody>
+              <% product.forEach(function(data){ %>
+                <tr>
+                  <td>
+                    <%= data.product_id %>
+                  </td>
+                  <td>
+                    <%= data.product_type %>
+                  </td>
+                  <td>
+                    <%= data.user_name %>
+                  </td>
+                  <td>
+                    <%= data.reference %>
+                  </td>
+                  <!-- <td>
+
+                  </td> -->
+
+                  <td>
+                    <%= data.additional_info %>
+                  </td>
+                  <td class="text-<%=data.text%>">
+                    <%= data.status %>
+                  </td>
+                  <td id="aname">
+                    <%= data.assign_name %>
+                  </td>
+
+
+                  <td>
+                    <a href="/assign_team?id=<%= data.id %>" class=" text-primary"><i id="assign"
+                        class="bi bi-pen-fill"></i></a>
+                  </td>
+
+
+                  <td><a href="/view_project_details?id=<%= data.id %>"><i class="bi bi-eye-fill text-primary"></i></a>
+                  </td>
+                  <td>
+                    <a href="/uploaded-files?id=<%= data.id %>" class=" text-primary"><i
+                        class="bi bi-cloud-arrow-down-fill"></i></a>
+                  </td>
+
+
+                </tr>
+                <% }); %>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- <section>
+    <form action='/add_data' method="POST" enctype="multipart/form-data">
+      <label for="name">Name:</label>
+      <input type="text" class="form-control" name="name" value="" required><br><br>
+      <label for="body">Descrition:</label>
+      <input type="text" class="form-control" name="body" value="" required><br><br>
+      <div class="form-group dropdo">
+        <label for="name">Services:</label>
+        <select id="services" name="services">
+          <option value="">------select-----</option>
+          <option value="Vector_Artwork">ram</option>
+          <option value="Documents">mohan</option>
+          <option value="Embroidery_Digitizing">sham</option>
+        </select>
+      </div><br>
+      <button class="btn btn-primary" type="submit">Upload</button>
+    </form>
+  </section> -->
+
+
+
+
+  <%- include('footer')-%>

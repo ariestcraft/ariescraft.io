@@ -1,0 +1,184 @@
+<%- include('header'); -%>
+
+    <style>
+        #services {
+            border: 0;
+            border-bottom: 1px solid black;
+            padding: 10px;
+            width: 100%;
+        }
+
+        textarea {
+            border: 1px solid black !important;
+        }
+
+        .comment-box {
+            margin-top: 45px;
+        }
+
+        .sbtn {
+            padding: 15px 40px;
+            font-size: 15px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .contact-wrap {
+            background-color: transparent;
+            margin-top: 50px;
+        }
+
+        .contactForm {
+            height: 500px;
+            line-height: .8;
+        }
+    </style>
+
+
+    <section class="ftco-section">
+
+        <div class="container">
+
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <div class="wrapper">
+
+                        <div class="row no-gutters">
+                            <div class="col-md-7">
+                                <div class="contact-wrap w-100 p-md-5 p-4">
+                                    <h3 class="mb-4">Artwork</h3><br>
+                                    <div id="form-message-warning" class="mb-4"></div>
+                                    <div id="form-message-success" class="mb-4">
+                                        Your message was sent, thank you!
+                                    </div>
+                                    <form action="/customer/product_add" method="POST" enctype="multipart/form-data"
+                                        class="contactForm">
+                                        <label class="label" for="message">Order ID :</label>
+                                        <input type="hidden" name="id" value="<%=productid + 1%>">
+                                        <input type="text" class="form-control" name="product_id"
+                                            value="AW<%=productid + 1%>" readonly required><br>
+
+                                        <label class="label" for="message">Order type :</label>
+                                        <div class="form-group dropdo">
+                                            <select id="services" name="order_type" required>
+                                                <option value=""></option>
+                                                <option value="request">Request a quote</option>
+                                                <option value="order">Request an order</option>
+                                            </select>
+                                        </div><br>
+                                        <!-- <input type="hidden" name="order_type" value="request a quote"> -->
+
+                                        <!-- <label class="label" for="message">Product type :</label>
+                                        <div class="form-group dropdo">
+                                            <select id="services" name="product_type" required>
+                                                <option value=""></option>
+                                                <option value="artwork">Artwork</option>
+                                                <option value="digitizing">Digitizing</option>
+                                                <option value="document">Document</option>
+                                            </select>
+                                        </div><br><br> -->
+                                        <input type="hidden" name="product_type" value="artwork">
+
+                                        <!-- <label class="label" for="message">Product name :</label>
+                                        <input type="text" class="form-control" name="product_name" required><br><br> -->
+
+                                        <label class="label" for="message">PO/Customer Refrence Name :</label>
+                                        <input type="text" class="form-control" name="reference" required><br>
+
+                                        <label class="label" for="subject">Select a fromat type for the compleated
+                                            design</label>
+                                        <div class="form-group dropdo">
+                                            <select id="services" name="format_type" required>
+                                                <option value=""></option>
+                                                <option value="Adobe Acrobat (.ai)">Adobe Acrobat (.ai)</option>
+                                                <option value="Adobe Illustrator(.ai)">Adobe Illustrator(.ai)</option>
+                                                <option value="Adobe Illustrator(.eps CMYK)">Adobe Illustrator(.eps
+                                                    CMYK)</option>
+                                                <option value="Adobe Illustrator(.eps RGB)">Adobe Illustrator(.eps RGB)
+                                                </option>
+                                                <option value="Adobe Illustrator(.eps)">Adobe Illustrator(.eps)</option>
+                                                <option value="Adobe Illustrator CS (.eps)">Adobe Illustrator CS (.eps)
+                                                </option>
+                                                <option value="Adobe Illustrator CS2 (.eps)">Adobe Illustrator CS2
+                                                    (.eps)</option>
+                                                <option value="Adobe Illustrator V10 (.eps)">Adobe Illustrator V10
+                                                    (.eps)</option>
+                                                <option value="Adobe Illustrator V9 (.eps)">Adobe Illustrator V9 (.eps)
+                                                </option>
+                                                <option value="Adobe PageMaker (.pmd)">Adobe PageMaker (.pmd)</option>
+                                                <option value="Corel Draw 11 (.cdr)">Corel Draw 11 (.cdr)</option>
+                                                <option value="Corel Draw 10 (.cdr)">Corel Draw 10 (.cdr)</option>
+                                                <option value="Corel Draw 8 (.cdr)">Corel Draw 8 (.cdr)</option>
+                                                <option value="Corel Draw 9 (.cdr)">Corel Draw 9 (.cdr)</option>
+                                                <option value="Macromedia FreeHand (.fh)">Macromedia FreeHand (.fh)
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <br>
+
+                                        <label class="label" for="subject">what will the artwork be used for?</label>
+                                        <div class="form-group dropdo">
+
+                                            <select id="services" name="use_for" required>
+                                                <option value=""></option>
+                                                <option value="Silk Screen">Silk Screen</option>
+                                                <option value="Digital Printing (4 color process)">Digital Printing (4
+                                                    color process)</option>
+                                                <!-- <option value="Embroidery">Embroidery</option> -->
+                                                <option value="Vinyl Cutting">Vinyl Cutting</option>
+                                                <option value="Emboss/De-boss">Emboss/De-boss</option>
+                                                <option value="Etcing">Etcing</option>
+                                                <option value="Engraving">Engraving</option>
+                                                <option value="Foil Stamping">Foil Stamping</option>
+                                                <option value="Heat Transfer/ Sublimation">Heat Transfer/ Sublimation
+                                                </option>
+                                                <option value="Sand BLasting">Sand BLasting</option>
+                                                <option value="Fire Branding">Fire Branding</option>
+                                                <option value="Laser Etching for fabric">Laser Etching for fabric
+                                                </option>
+                                                <option value="Decorate Floor Mats">Decorate Floor Mats</option>
+                                                <option value="Rehinestone decoration on for apparel">Rehinestone
+                                                    decoration on for apparel</option>
+                                                <option value="others">others</option>
+
+                                            </select>
+                                        </div><br>
+
+                                        <button type="submit" onclick="submit_data()"
+                                            class="btn btn-primary sbtn">Submit</button>
+
+                                </div>
+                            </div>
+
+                            <!-- style="background-image: url(images/img.jpg);" -->
+                            <div class="col-md-5 d-flex align-items-stretch comment-box">
+                                <div class="info-wrap w-100 p-5 img">
+                                    <label class="label" for="message">Attachments</label><br>
+                                    <input type="file" id="myFile" name="mfiles" required multiple><br><br>
+
+                                    <label class="label" for="message">Additional Informations:</label>
+                                    <textarea style=" height: 289px;" class="form-control" name="additional_info"
+                                        required></textarea><br><br>
+                                </div>
+                            </div>
+
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function submit_data() {
+            alert("Your order is submited successfully!");
+        }
+
+    </script>
+
+
+    <%- include('footer'); -%>

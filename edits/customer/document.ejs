@@ -1,0 +1,219 @@
+<%- include('header'); -%>
+  <style>
+    /* Create two equal columns that floats next to each other */
+    .column {
+      float: left;
+      width: 50%;
+      padding: 10px;
+      /* Should be removed. Only for demonstration */
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    .label {
+      display: inline;
+    }
+
+    textarea {
+      border: 1px solid black !important;
+    }
+
+    .comment-box {
+      margin-top: 190px;
+    }
+
+    .sbtn {
+      padding: 15px 40px;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+
+    input[type="radio"] {
+      width: 25px;
+      height: 18px;
+    }
+
+    .contact-wrap {
+      background-color: transparent;
+      margin-top: 50px;
+    }
+
+    .contactForm {
+      height: 500px;
+      line-height: .8;
+    }
+  </style>
+  <section class="ftco-section">
+
+    <div class="container">
+
+      <div class="row justify-content-center">
+        <div class="col-md-12">
+          <div class="wrapper">
+
+            <div class="row no-gutters">
+              <div class="col-md-7">
+                <div class="contact-wrap w-100 p-md-5 p-4">
+                  <h3 class="mb-4">Document</h3>
+                  <div id="form-message-warning" class="mb-4"></div>
+                  <div id="form-message-success" class="mb-4">
+                    Your message was sent, thank you!
+                  </div>
+                  <form action='/customer/product_add' method="POST" enctype="multipart/form-data" class="contactForm">
+
+                    <label class="label" for="message">Order ID :</label>
+                    <input type="hidden" name="id" value="<%=productid + 1%>">
+                    <input type="text" class="form-control" name="product_id" value="DP<%=productid + 1%>" readonly
+                      required><br>
+
+                    <!-- <label class="label" for="message">Order type :</label>
+                    <div class="form-group dropdo">
+                      <select id="services" name="order_type" required>
+                        <option value=""></option>
+                        <option value="request">Request a quote</option>
+                        <option value="order">Request an Order</option>
+                      </select>
+                    </div><br> -->
+                    <input type="hidden" name="order_type" value="request a quote">
+
+                    <!-- <label class="label" for="message">Product type :</label>
+                    <div class="form-group dropdo">
+                      <select id="services" name="product_type" required>
+                        <option value=""></option>
+                        <option value="artwork">Artwork</option>
+                        <option value="digitizing">Digitizing</option>
+                        <option value="document">Document</option>
+                      </select>
+                    </div><br> -->
+                    <input type="hidden" name="product_type" value="document">
+
+                    <!-- <label class="label" for="message">Product name :</label>
+                    <input type="text" class="form-control" name="product_name" required><br> -->
+
+
+                    <label class="label" for="message">PO/Customer Refrence Name :</label>
+                    <input type="text" class="form-control" name="reference" required><br>
+
+
+                    <label class="label" for="message">Please select your product from the list below :</label><br><br>
+                    <div class="row">
+                      <div class="column" style="background-color:#aaa;">
+                        <input type="radio" name="product_name" value="Announcement">
+                        <label class="label label container">Announcement</label>
+                        <br>
+                        <input type="radio" name="product_name" value="Brochure">
+                        <label class="label container">Brochure
+                        </label>
+                        <br>
+                        <input type="radio" name="product_name" value="Business Card">
+                        <label class="label container">Business Card</label>
+                        <br>
+                        <input type="radio" name="product_name" value="Calendar">
+                        <label class="label container">Calendar</label>
+                        <br>
+                        <input type="radio" name="product_name" value="Certificate">
+                        <label class="label container">Certificate</label>
+                        <br>
+                        <input type="radio" name="product_name" value="Chart/Graph">
+                        <label class="label container">Chart/Graph</label>
+                        <br>
+                        <input type="radio" name="product_name" value="Flyer">
+                        <label class="label container">Flyer</label>
+                        <br>
+                        <input type="radio" name="product_name" value="Form">
+                        <label class="label container">Form</label>
+                        <br>
+                        <input type="radio" name="product_name" value="Invitation">
+                        <label class="label container">Invitation</label>
+                        <br>
+                        <input type="radio" name="product_name" value="Label">
+                        <label class="label container">Label</label>
+                        <br>
+                        <input type="radio" name="product_name" value="Letter">
+                        <label class="label container">Letter</label>
+                        <br>
+                        <input type="radio" name="product_name" value="Letterhead">
+                        <label class="label container">Letterhead</label>
+                      </div>
+
+                      <div class="column" style="background-color:#bbb;">
+                        <input type="radio" name="product_name" value="Menu">
+                        <label class="label container">Menu</label>
+                        <br>
+                        <input type="radio" name="product_name" value="Newsletter">
+                        <label class="label container">Newsletter</label>
+                        <br>
+                        <input type="radio" name="product_name" value="Postcard">
+                        <label class="label container">Postcard</label>
+                        <br>
+                        <input type="radio" name="product_name" value="Presentation">
+                        <label class="label container">Presentation</label>
+                        <br>
+                        <input type="radio" name="product_name" value="Program">
+                        <label class="label container">Program</label>
+                        <br>
+                        <input type="radio" name="product_name" value="Resume">
+                        <label class="label container">Resume</label>
+                        <br>
+                        <input type="radio" name="product_name" value="Resume Cover Letter">
+                        <label class="label container">Resume Cover Letter</label>
+                        <br>
+                        <input type="radio" name="product_name" value="Sign/Banner">
+                        <label class="label container">Sign/Banner</label>
+                        <br>
+                        <input type="radio" name="product_name" value="Tab">
+                        <label class="label container">Tab</label>
+                        <br>
+                        <input type="radio" name="product_name" value="Table Tent">
+                        <label class="label container">Table Tent</label>
+                        <br>
+                        <input type="radio" name="product_name" value="Ticket">
+                        <label class="label container">Ticket</label>
+                        <br>
+                        <input type="radio" name="product_name" value="Word Processing">
+                        <label class="label container">Word Processing</label>
+                      </div>
+                    </div>
+
+                    <br><br>
+
+                    <button type="submit" onclick="submit_data()" class="btn btn-primary sbtn">Submit</button>
+
+                </div>
+              </div>
+              <div class="col-md-5 d-flex align-items-stretch comment-box">
+                <!-- style="background-image: url(images/img.jpg);" -->
+                <div class="info-wrap w-100 img">
+                  <label class="label" for="message">Attachments</label><br>
+                  <input type="file" id="myFile" name="mfiles" multiple required><br>
+                  <label class="label" for="message">Additional Informations:</label>
+                  <textarea style=" height: 289px;" class="form-control" name="additional_info"
+                    required></textarea><br><br>
+                </div>
+              </div>
+
+              </form>
+            </div>
+
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function submit_data() {
+      alert("Your order is submited successfully!");
+    }
+  </script>
+
+
+  <%- include('footer'); -%>

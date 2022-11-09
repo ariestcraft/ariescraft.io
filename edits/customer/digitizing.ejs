@@ -1,0 +1,168 @@
+<%- include('header'); -%>
+
+  <style>
+    #services {
+      border: 0;
+      border-bottom: 1px solid black;
+      padding: 10px;
+      width: 100%;
+    }
+
+    textarea {
+      border: 1px solid black !important;
+    }
+
+    .comment-box {
+      margin-top: 135px;
+    }
+
+    .sbtn {
+      padding: 15px 40px;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+
+    .contact-wrap {
+      background-color: transparent;
+      margin-top: 50px;
+    }
+
+    .contactForm {
+      height: 500px;
+      line-height: .8;
+    }
+  </style>
+
+  <section class="ftco-section">
+
+    <div class="container">
+
+      <div class="row justify-content-center">
+        <div class="col-md-12">
+          <div class="wrapper">
+
+            <div class="row no-gutters">
+              <div class="col-md-7">
+                <div class="contact-wrap w-100 p-md-5 p-4">
+                  <h3 class="mb-4">Digitizing</h3>
+                  <div id="form-message-warning" class="mb-4"></div>
+                  <div id="form-message-success" class="mb-4">
+                    Your message was sent, thank you!
+                  </div>
+
+                  <form action='/customer/product_add' method="POST" enctype="multipart/form-data" class="contactForm">
+
+                    <label class="label" for="message">Order ID :</label>
+                    <input type="hidden" name="id" value="<%=productid + 1%>">
+                    <input type="text" class="form-control" name="product_id" value="ED<%=productid + 1%>" readonly
+                      required><br>
+
+                    <label class="label" for="message">Order type :</label>
+                    <div class="form-group dropdo">
+                      <select id="services" name="order_type" required>
+                        <option value=""></option>
+                        <option value="request">Request a quote</option>
+                        <option value="order">Request an order</option>
+                      </select>
+                    </div><br>
+                    <!-- <input type="hidden" name="order_type" value="request a quote"> -->
+
+                    <!-- <label class="label" for="message">Product type :</label>
+                    <div class="form-group dropdo">
+                      <select id="services" name="product_type" required>
+                        <option value=""></option>
+                        <option value="artwork">Artwork</option>
+                        <option value="digitizing">Digitizing</option>
+                        <option value="document">Document</option>
+                      </select>
+                    </div><br> -->
+                    <input type="hidden" name="product_type" value="digitizing">
+
+                    <!-- <label class="label" for="message">Product name :</label>
+                    <input type="text" class="form-control" name="product_name" required><br> -->
+
+                    <label class="label" for="message">PO/Customer Refrence Name :</label>
+                    <input type="text" class="form-control" name="reference" required><br>
+
+
+                    <label class="label" for="subject">Placement on the garment.</label>
+                    <div class="form-group dropdo">
+                      <select id="services" name="placement" required>
+                        <option value=""></option>
+                        <option value="Left Chest">Left Chest</option>
+                        <option value="Neck">Neck</option>
+                        <option value="Full Back">Full Back</option>
+                        <option value="Cap">Cap</option>
+                        <option value="Hat Front">Hat Front</option>
+                        <option value="Hat Back">Hat Back</option>
+                        <option value="Hat Side">Hat Side</option>
+                        <option value="Right Sleeve">Right Sleeve</option>
+                        <option value="Left Sleeve">Left Sleeve</option>
+                        <option value="Others">Others</option>
+                      </select>
+                    </div>
+                    <br>
+                    <label class="label" for="message">Please let us know the size :</label>
+                    <input type="text" class="form-control" name="size" value=""><br>
+
+                    <!-- <label class="label" for="message">Choose Your Color Option :</label><br>
+                    <input type="checkbox" class="checkbox" name="" id="showField" value="yes" onchange="myFunction()"> -->
+                    <label class="label" for="message">Please fill your color name or color code :</label>
+                    <input type="text" class="form-control" name="color" value=""><br>
+
+                    <!-- <label class="label" for="message" name="color">Color Code/ Colors:</label><br />
+                    <span id="nameField"><label class="label" for="message">Color/Color Code :</label>
+                      <input type="text" class="form-control" name="color" id="fullName"></span><br> -->
+
+                    <!-- <input type="checkbox" class="checkbox" name="color" value="Select as per the Artwork">
+                    <label class="label" for="message">Select as per the Artwork :</label><br> -->
+
+
+
+                    <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+                    <script>$('#nameField').css('display', 'none'); // Hide the text input box in default
+                      function myFunction() {
+                        if ($('#showField').prop('checked')) {
+                          $('#nameField').css('display', 'block');
+                        } else {
+                          $('#nameField').css('display', 'none');
+                        }
+                      }</script> -->
+
+                    <button type="submit" onclick="submit_data()" class="btn btn-primary sbtn">Submit</button>
+
+                </div>
+              </div>
+
+              <!-- style="background-image: url(images/img.jpg);" -->
+              <div class="col-md-5 d-flex align-items-stretch comment-box">
+                <div class="info-wrap w-100 p-5 img">
+                  <label class="label" for="message">Attachments</label><br>
+                  <input type="file" id="myFile" name="mfiles" required multiple><br><br>
+                  <label class="label" for="message">Additional Informations:</label>
+                  <textarea style=" height: 289px;" class="form-control" name="additional_info"
+                    required></textarea><br><br>
+                </div>
+              </div>
+
+              </form>
+            </div>
+
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function submit_data() {
+      alert("Your order is submited successfully!");
+    }
+  </script>
+
+
+
+  <%- include('footer'); -%>

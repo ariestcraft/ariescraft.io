@@ -1,0 +1,69 @@
+<%- include('header'); -%>
+
+    <section style="background-color: aliceblue;">
+        <div id="app" class="container pt-1">
+            <h3 class="mt-3">edit user</h3>
+
+            <div class="row">
+                <div class="col" style="overflow-x:auto;">
+
+
+                    <!-- INLINE FORM ELELEMNTS -->
+                    <div class="row mb-5">
+                        <div class="col-lg-8" style="margin: auto;">
+                            <div class="form-panel">
+                                <!-- <h4 class="mb"><i class="fa fa-angle-right"></i> Add user</h4> -->
+                                <form action="/edit-user" method="POST" class="form-inline" role="form">
+
+
+                                    <div class="form-group">
+                                        <label class="sr-only">Name</label>
+                                        <input type="hidden" name="id" value="<%= user[0].id %>" class="form-control"
+                                            placeholder="Enter Name">
+                                        <input type="text" name="name" value="<%= user[0].name %>" class="form-control"
+                                            placeholder="Enter Name">
+                                    </div><br>
+                                    <div class="form-group">
+                                        <label class="sr-only">Email address</label>
+                                        <input type="email" name="email" value="<%= user[0].email %>"
+                                            class="form-control" placeholder="Enter email" required readonly>
+                                    </div><br>
+                                    <div class="form-group">
+                                        <label class="sr-only">Phone number</label>
+                                        <input type="tel" name="phone_no" value="<%= user[0].phone_no %>"
+                                            class="form-control" placeholder="Enter phone number" required>
+                                    </div><br>
+                                    <div class="form-group">
+                                        <label class="sr-only">Address</label>
+                                        <input type="text" name="address" value="<%= user[0].address %>"
+                                            class="form-control" placeholder="Enter address">
+                                    </div><br>
+                                    <div class="form-group">
+                                        <label class="sr-only">City</label>
+                                        <input type="text" name="city" value="<%= user[0].city %>" class="form-control"
+                                            placeholder="Enter city">
+                                    </div><br>
+                                    <div class="form-group">
+                                        <label class="sr-only">Pin code</label>
+                                        <input type="number" name="zip" value="<%= user[0].zip %>" class="form-control"
+                                            placeholder="Enter pin code">
+                                    </div><br>
+                                    <div class="form-group">
+                                        <label class="sr-only">Password</label>
+                                        <input type="text" name="password" value="<%= user[0].password %>"
+                                            class="form-control" placeholder="Password" required>
+                                    </div><br>
+                                    <button type="submit" class="btn btn-primary">edit user</button>
+                                </form>
+                            </div><!-- /form-panel -->
+                        </div><!-- /col-lg-12 -->
+                    </div><!-- /row -->
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <%- include('footer'); -%>

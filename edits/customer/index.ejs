@@ -1,0 +1,118 @@
+<%- include('header'); -%>
+  <style>
+    .row {
+      text-align: center !important;
+    }
+  </style>
+  <section class="ftco-section">
+
+    <div id="main_content">
+
+      <div id="page_content">
+        <h2></h2>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="table-wrap">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Order Type</th>
+                    <th>Refrence</th>
+                    <th>Status</th>
+                    <th>O/R</th>
+                    <th>View</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% if(artwork.length!=0){ var i=1; artwork.forEach(function(data){ %>
+                    <tr>
+                      <td scope="row">AW-<%=data.id %>
+                      </td>
+                      <td>Artwork</td>
+
+                      <td>
+                        <%=data.refrence %>
+                      </td>
+                      <td>
+                        <%=data.status_p%>
+                      </td>
+                      <td>
+                        <%=data.o_r%>
+                      </td>
+                      <td> <a href="/customer/view_project?id=<%=data.id%>" class="btn btn-primary">View Project</a>
+                      </td>
+
+                    </tr>
+                    <% i++; }) %>
+                      <% } else{ %>
+                        <tr>
+                          <td colspan="7"></td>
+                        </tr>
+                        <% } %>
+                          <!-- document digitizing -->
+                          <% if(document.length!=0){ var i=1; document.forEach(function(data){ %>
+                            <tr>
+                              <td scope="row">DP-<%=data.id %>
+                              </td>
+                              <td>Document</td>
+                              <td>
+                                <%=data.additional_info %>
+                              </td>
+                              <td>
+                                <%=data.status_p%>
+                              </td>
+                              <td>
+                                <%=data.o_r%>
+                              </td>
+                              <td> <a href="/customer/view_project?id=<%=data.id%>" class="btn btn-primary">View
+                                  Project</a>
+                              </td>
+
+                            </tr>
+                            <% i++; }) %>
+                              <% } else{ %>
+                                <tr>
+                                  <td colspan="7"></td>
+                                </tr>
+                                <% } %>
+                                  <% if(digitizing.length!=0){ var i=1; digitizing.forEach(function(data){ %>
+                                    <tr>
+                                      <td scope="row">ED-<%=data.id %>
+                                      </td>
+                                      <td>Digitizing</td>
+                                      <td>
+                                        <%=data.additional_info %>
+                                      </td>
+                                      <td><a href="#" class="btn <%=data.status%>">
+                                          <%=data.status_p%>
+                                        </a></td>
+                                      <td>
+                                        <%=data.o_r%>
+                                      </td>
+                                      <td> <a href="/customer/view_project?id=<%=data.id%>" class="btn btn-primary">View
+                                          Project</a></td>
+
+                                    </tr>
+                                    <% i++; }) %>
+                                      <% } else{ %>
+                                        <tr>
+                                          <td colspan="7"></td>
+                                        </tr>
+                                        <% } %>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+
+
+
+  <%- include('footer'); -%>

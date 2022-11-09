@@ -1,0 +1,68 @@
+<%- include('header'); -%>
+
+    <style>
+        th {
+            font-size: 13px;
+        }
+
+        .img-ss {
+            width: 50px;
+            height: 35px;
+        }
+    </style>
+
+    <section style="background-color: aliceblue;">
+        <div class="container pt-2">
+            <h3 class="mt-3">Uploaded Files</h3>
+            <!-- <button class="btn btn-primary mb-3">Add Production Team</button> -->
+
+
+            <div class="row">
+                <div class="col">
+                    <table style=" border-collapse: collapse;" id="user-table" class="display table-bordered"
+                        cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th>Product ID</th>
+                                <th>Comment</th>
+                                <th>File</th>
+                                <th>Service</th>
+                                <th>Team ID</th>
+                                <th>Team name</th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+                            <% project.forEach(function(data){ %>
+                                <tr>
+                                    <th>
+                                        OID<%= data.product_id %>
+                                    </th>
+                                    <th>
+                                        <%= data.additional_info %>
+                                    </th>
+                                    <th>
+                                        <img class="img-ss" src="/production/upload-project/<%= data.attachment %>"
+                                            alt="">
+                                    </th>
+                                    <th>
+                                        <%= data.service %>
+                                    </th>
+                                    <th>
+                                        <%= data.user_id %>
+                                    </th>
+                                    <th>
+                                        <%= data.user_name%>
+                                    </th>
+
+                                </tr>
+                                <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <%- include('footer'); -%>

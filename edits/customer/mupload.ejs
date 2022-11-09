@@ -1,0 +1,75 @@
+<%- include('header'); -%>
+
+    <style>
+        #services {
+            border: 0;
+            border-bottom: 1px solid black;
+            padding: 10px;
+            width: 100%;
+        }
+
+        textarea {
+            border: 1px solid black !important;
+        }
+
+        .comment-box {
+            margin-top: 45px;
+        }
+
+        .sbtn {
+            padding: 15px 40px;
+            font-size: 15px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+    </style>
+
+
+    <section class="ftco-section">
+
+        <div class="container">
+
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <div class="wrapper">
+
+                        <div class="row no-gutters">
+                            <div class="col-md-7">
+                                <div class="contact-wrap w-100 p-md-5 p-4">
+                                    <h3 class="mb-4">Artwork</h3><br>
+                                    <div id="form-message-warning" class="mb-4"></div>
+                                    <div id="form-message-success" class="mb-4">
+                                        Your message was sent, thank you!
+                                    </div>
+                                    <form action="/multiple" method="POST" enctype="multipart/form-data"
+                                        class="contactForm">
+
+                                        <label class="label" for="message">Attachments</label><br>
+                                        <input type="file" id="myFile" name="mfiles" required multiple><br><br>
+
+                                        <button type="submit" onclick="submit_data()"
+                                            class="btn btn-primary sbtn">Submit</button>
+
+
+                                </div>
+                            </div>
+
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function submit_data() {
+            alert("Your order is submited successfully!");
+        }
+    </script>
+
+
+    <%- include('footer'); -%>
